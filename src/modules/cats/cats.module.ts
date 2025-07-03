@@ -10,7 +10,7 @@ import { IndependentService } from '../independent/independent.service';
 @Module({
   imports: [],
   // providers: [CatsService, LOGGER, SharedLoggerService, BilliService,{provide: 'CUSTOM_VALUE', useValue: "Will work"}],
-  providers: [CatsService, LOGGER,IndependentService],
+  providers: [CatsService, LOGGER,IndependentService],//eema sared use garna mildina as shared is dependent
 
   controllers: [CatsController],
   exports: [CatsService],
