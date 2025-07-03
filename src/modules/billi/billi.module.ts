@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common';
-import { BilliController } from './billi.controller';
 import { BilliService } from './billi.service';
+import { BilliController } from './billi.controller';
+import { CatsService } from '../cats/cats.service';
+import { CustomModule } from '../custom-providers/custom.module';
+import { LOGGER } from '../custom-providers/logger.provider';
+import { SharedLoggerService } from 'src/common/services/shared.service';
 import { CatsModule } from '../cats/cats.module';
 
 @Module({
-  imports: [CatsModule],
+  imports: [CustomModule],
+  providers: [BilliService, LOGGER, SharedLoggerService],
   controllers: [BilliController],
-  providers: [BilliService],
   exports: [BilliService],
 })
 export class BilliModule {}

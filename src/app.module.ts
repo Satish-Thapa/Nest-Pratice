@@ -7,6 +7,7 @@ import {
   LOGGER,
   LOGGER_PROVIDER,
 } from './modules/custom-providers/logger.provider';
+import { SharedLoggerModule } from './common/services/shared.module';
 
 @Module({
   imports: [CatsModule, BilliModule],
