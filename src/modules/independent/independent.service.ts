@@ -1,12 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject, Optional } from '@nestjs/common';
 import { SharedLoggerService } from 'src/common/services/shared.service';
+import { DynamicService } from '../../dynamic-modules/dynamic/dynamic.service';
 
 @Injectable()
 export class IndependentService {
-    // constructor(private readonly sharedLogger: SharedLoggerService) {} //cats ley milaina tespachi
+  constructor(@Optional() private readonly dynamicService?: DynamicService) {}
 
   getMessage(): string {
     // this.sharedLogger.log('IndependentService: getMessage called');
-    return 'Hello from IndependentService!';
+    const dynamicValue = this.dynamicService?.getOptions()?.value;
+    return `Hello from IndependentService! Dynamic value: ${dynamicValue}`;
   }
 }
